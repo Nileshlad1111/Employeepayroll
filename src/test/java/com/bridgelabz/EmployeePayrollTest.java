@@ -20,4 +20,14 @@ public class EmployeePayrollTest {
         }
     }
 
+    @Test
+    public void givenDatabaseRetrieveDataInTable() {
+        EmployeePayrollService employeePayroll = new EmployeePayrollService();
+        try {
+            int result = employeePayroll.dataInTable();
+            Assert.assertEquals(5, result);
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

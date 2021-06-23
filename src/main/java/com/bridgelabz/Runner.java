@@ -12,7 +12,7 @@ public class Runner {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         EmployeePayrollService employeePayrollService = new EmployeePayrollService();
         employeePayrollService.connect();
-
+        employeePayrollService.dataInTable();
         try {
 
             Class.forName("com.mysql.jdbc.Driver");
