@@ -1,14 +1,16 @@
 package com.bridgelabz;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
 
 public class EmployeePayrollTest {
 
+
     @Test
-    public void givenDatabase() {
+    public void givenDatabaseSetupConnectionReturnConnected() {
         EmployeePayrollService employeePayroll = new EmployeePayrollService();
         try {
             String result = employeePayroll.connect();
@@ -17,4 +19,5 @@ public class EmployeePayrollTest {
             e.printStackTrace();
         }
     }
+
 }

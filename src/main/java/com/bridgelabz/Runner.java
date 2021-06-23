@@ -9,7 +9,10 @@ public class Runner {
     private static final String USER_NAME = "root";
     private static final String PASSWORD = "gopi";
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+        EmployeePayrollService employeePayrollService = new EmployeePayrollService();
+        employeePayrollService.connect();
+
         try {
 
             Class.forName("com.mysql.jdbc.Driver");

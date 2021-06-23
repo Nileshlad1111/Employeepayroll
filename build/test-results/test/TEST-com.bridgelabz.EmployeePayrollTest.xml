@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bridgelabz.EmployeePayrollTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-06-23T10:56:47" hostname="LAPTOP-DILI6N8Q" time="0.318">
+<testsuite name="com.bridgelabz.EmployeePayrollTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-06-23T12:53:47" hostname="LAPTOP-DILI6N8Q" time="0.325">
   <properties/>
-  <testcase name="givenDatabase()" classname="com.bridgelabz.EmployeePayrollTest" time="0.318"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="givenDatabaseSetupConnectionReturnConnected()" classname="com.bridgelabz.EmployeePayrollTest" time="0.294"/>
+  <testcase name="givenDatabaseRetrieveDataInTable()" classname="com.bridgelabz.EmployeePayrollTest" time="0.03"/>
+  <system-out><![CDATA[ID:1 Name: nilesh Salary 100000 Start 2020-06-23
+ID:2 Name: Pawan Salary 104520 Start 2020-06-24
+ID:3 Name: Pranv Salary 107890 Start 2019-05-24
+ID:4 Name: mahesh Salary 1004526 Start 2020-03-27
+ID:5 Name: Kushal Salary 10789078 Start 2019-05-25
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
