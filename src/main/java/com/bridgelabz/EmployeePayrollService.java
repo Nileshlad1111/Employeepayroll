@@ -1,9 +1,6 @@
 package com.bridgelabz;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class EmployeePayrollService {
     DatabaseConnection con = new DatabaseConnection();
@@ -14,20 +11,29 @@ public class EmployeePayrollService {
 
     public int dataInTable() throws SQLException, ClassNotFoundException {
         connect();
-        Statement statement = con.connection.createStatement();
-        ResultSet resultSet = statement.executeQuery( "SELECT * FROM Employee_payroll");
-        int count = 0;
-        while (resultSet.next()) {
-            count++;
-            System.out.println("ID:"+resultSet.getString(1) +
-                    " Name: " + resultSet.getString(2) +
-                    " Salary " + resultSet.getString(3)+
-                    " Start " + resultSet.getString(4)
-                    );
-        }
+        PreparedStatement preparedStatement = con.connection.prepareStatement("SELECT * FROM employee_payroll");
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+        int count = countResult(resultSet);
         con.connection.close();
         return count;
     }
+
+    private int countResult(ResultSet resultSet) throws SQLException {
+        int count = 0;
+        while (resultSet.next()) {
+            count++;
+            System.out.println("Id: " + resultSet.getInt(1) +
+                    "   Name: " + resultSet.getString(2) +
+                    "   Gender: " + resultSet.getString(3) +
+                    "   Address: " + resultSet.getString(4) +
+                    "   Department: " + resultSet.getString(5) +
+                    "   Phone: " + resultSet.getLong(6) +
+                    "   Start: " + resultSet.getString(7));
+        }
+        return count;
+    }
+
 
     public int updateTable() throws SQLException, ClassNotFoundException {
         connect();
@@ -62,6 +68,18 @@ public class EmployeePayrollService {
         }
         con.connection.close();
         return basicPay;
+    }
+
+    public int dataInRange(Date start, Date end) throws SQLException, ClassNotFoundException {
+        connect();
+        PreparedStatement preparedStatement = con.connection.prepareStatement("SELECT * FROM employee_payroll WHERE start BETWEEN ? AND ?");
+        preparedStatement.setDate(1, start);
+        preparedStatement.setDate(2, end);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+        int count = countResult(resultSet);
+        con.connection.close();
+        return count;
     }
 
 }

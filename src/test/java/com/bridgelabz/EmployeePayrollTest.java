@@ -3,6 +3,7 @@ package com.bridgelabz;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
+import java.sql.Date;
 import java.sql.SQLException;
 
 public class EmployeePayrollTest {
@@ -47,6 +48,17 @@ public class EmployeePayrollTest {
         try {
             int result = employeePayroll.retrieveByName("Nilesh");
             Assert.assertEquals(2000000, result);
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenDatabaseRetrieveDataInRangeOfDate() {
+        EmployeePayrollService employeePayroll = new EmployeePayrollService();
+        try {
+            int result = employeePayroll.dataInRange(Date.valueOf("2019-01-01"), Date.valueOf("2020-11-01"));
+            Assert.assertEquals(1, result);
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
