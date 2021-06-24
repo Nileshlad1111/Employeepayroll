@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bridgelabz.EmployeePayrollTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-06-23T13:58:13" hostname="LAPTOP-DILI6N8Q" time="0.321">
+<testsuite name="com.bridgelabz.EmployeePayrollTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-06-24T10:25:23" hostname="LAPTOP-DILI6N8Q" time="0.3">
   <properties/>
-  <testcase name="givenDatabaseSetupConnectionReturnConnected()" classname="com.bridgelabz.EmployeePayrollTest" time="0.321"/>
+  <testcase name="givenDatabaseUpdateDataInTable()" classname="com.bridgelabz.EmployeePayrollTest" time="0.3"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

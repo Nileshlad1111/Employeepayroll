@@ -1,7 +1,6 @@
 package com.bridgelabz;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
@@ -26,6 +25,17 @@ public class EmployeePayrollTest {
         try {
             int result = employeePayroll.dataInTable();
             Assert.assertEquals(5, result);
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenDatabaseUpdateDataInTable() {
+        EmployeePayrollService employeePayroll = new EmployeePayrollService();
+        try {
+            int result = employeePayroll.updateTable();
+            Assert.assertEquals(1, result);
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }

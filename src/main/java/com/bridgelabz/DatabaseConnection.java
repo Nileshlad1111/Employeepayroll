@@ -11,7 +11,7 @@ public class DatabaseConnection {
     String status;
     Connection connection;
 
-    public String connectionToDatabase() throws ClassNotFoundException {
+    public String connectionToDatabase() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             status = "Driver is loaded";

@@ -27,4 +27,15 @@ public class EmployeePayrollService {
         con.connection.close();
         return count;
     }
+
+    public int updateTable() throws SQLException, ClassNotFoundException {
+        connect();
+        Statement statement = con.connection.createStatement();
+        int resultSet = statement.executeUpdate( "UPDATE Employee_payroll " +
+                "SET salary = 3000000 " +
+                "WHERE Name = 'Pawan'");
+        con.connection.close();
+        return resultSet;
+    }
+
 }

@@ -13,6 +13,7 @@ public class Runner {
         EmployeePayrollService employeePayrollService = new EmployeePayrollService();
         employeePayrollService.connect();
         employeePayrollService.dataInTable();
+        employeePayrollService.updateTable();
         try {
 
             Class.forName("com.mysql.jdbc.Driver");
