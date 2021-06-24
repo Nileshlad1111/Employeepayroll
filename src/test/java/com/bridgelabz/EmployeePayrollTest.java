@@ -31,10 +31,10 @@ public class EmployeePayrollTest {
     }
 
     @Test
-    public void givenDatabaseUpdateDataInTable() {
+    public void givenDatabaseUpdateDataInTableUsingPreparedStatement() {
         EmployeePayrollService employeePayroll = new EmployeePayrollService();
         try {
-            int result = employeePayroll.updateTable();
+            int result = employeePayroll.updateTableBasicPay(2000000, "Nilesh");
             Assert.assertEquals(1, result);
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
@@ -42,11 +42,11 @@ public class EmployeePayrollTest {
     }
 
     @Test
-    public void givenDatabaseUpdateDataInTableUsingPreparedStatement() {
+    public void givenDatabaseRetrieveDataByNameUsingPreparedStatement() {
         EmployeePayrollService employeePayroll = new EmployeePayrollService();
         try {
-            int result = employeePayroll.updateTableBasicPay(2000000, "nilesh");
-            Assert.assertEquals(1, result);
+            int result = employeePayroll.retrieveByName("Nilesh");
+            Assert.assertEquals(2000000, result);
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
