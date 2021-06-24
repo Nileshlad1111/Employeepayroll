@@ -14,6 +14,7 @@ public class Runner {
         employeePayrollService.connect();
         employeePayrollService.dataInTable();
         employeePayrollService.updateTable();
+        employeePayrollService.updateTableBasicPay(1000, "nilesh");
         try {
 
             Class.forName("com.mysql.jdbc.Driver");

@@ -1,5 +1,6 @@
 package com.bridgelabz;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -34,6 +35,17 @@ public class EmployeePayrollService {
         int resultSet = statement.executeUpdate( "UPDATE Employee_payroll " +
                 "SET salary = 3000000 " +
                 "WHERE Name = 'Pawan'");
+        con.connection.close();
+        return resultSet;
+    }
+
+    public int updateTableBasicPay(int salary, String name) throws SQLException, ClassNotFoundException {
+        connect();
+        PreparedStatement preparedStatement = con.connection.prepareStatement("UPDATE Employee_payroll SET salary = ? WHERE Name = ?");
+        preparedStatement.setInt(1, salary);
+        preparedStatement.setString(2, name);
+
+        int resultSet = preparedStatement.executeUpdate();
         con.connection.close();
         return resultSet;
     }
