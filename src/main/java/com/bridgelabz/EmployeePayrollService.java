@@ -1,5 +1,6 @@
 package com.bridgelabz;
 
+
 import java.sql.*;
 
 public class EmployeePayrollService {
@@ -25,11 +26,12 @@ public class EmployeePayrollService {
             count++;
             System.out.println("Id: " + resultSet.getInt(1) +
                     "   Name: " + resultSet.getString(2) +
-                    "   Gender: " + resultSet.getString(3) +
-                    "   Address: " + resultSet.getString(4) +
-                    "   Phone: " + resultSet.getLong(5) +
-                    "   Start: " + resultSet.getString(6) +
-                    "   Salary: " + resultSet.getInt(7));
+                    "   Salary: " + resultSet.getInt(3) +
+                    "   Start: " + resultSet.getString(4)+
+                    "   Gender: " + resultSet.getString(5) +
+                    "   Address: " + resultSet.getString(6) +
+                    "   Phone: " + resultSet.getLong(7));
+
         }
         return count;
     }
@@ -122,7 +124,7 @@ public class EmployeePayrollService {
         return groupByToPerformOperations(sql, field, column);
     }
 
-    public int addNewEmployee (String name, String gender, String address, long phone, Date date, double salary) throws SQLException, ClassNotFoundException {
+    public int addNewEmployee (int ID , String Name, double salary, Date start, String gender, String address, long phone ) throws SQLException, ClassNotFoundException {
         connect();
         int result = 0;
         con.connection.setAutoCommit(false);
@@ -132,10 +134,10 @@ public class EmployeePayrollService {
                         "INSERT INTO payroll ( Salary, Deductions, Taxable_Pay, Income_Tax, Net_Pay ) " +
                                 "VALUES ( ?, ?, ?, ?, ? );");
                 preparedStatement.setDouble(1, salary);
-                preparedStatement.setDouble(2, salary);
-                preparedStatement.setDouble(3, salary);
-                preparedStatement.setDouble(4, salary);
-                preparedStatement.setDouble(5, salary);
+                preparedStatement.setDouble(2, salary * 0.20);
+                preparedStatement.setDouble(3, salary - salary * 0.20);
+                preparedStatement.setDouble(4, (salary - salary * 0.20) * 0.1);
+                preparedStatement.setDouble(5, salary - (salary - salary * 0.20) * 0.1);
                 result += preparedStatement.executeUpdate();
             } catch (SQLException e) {
                 System.out.println("work on Already existing salary");
@@ -143,14 +145,15 @@ public class EmployeePayrollService {
 
 
             PreparedStatement preparedStatement2 = con.connection.prepareStatement(
-                    "INSERT INTO employee_payroll ( Name, Gender, Address, Phone, Start, Salary) " +
+                    "INSERT INTO employee_payroll ( ID, Name, salary, start,Address, Phone, Start ) " +
                             "VALUES ( ?, ?, ?, ?, ?, ? );");
-            preparedStatement2.setString(1, name);
-            preparedStatement2.setString(2, gender);
-            preparedStatement2.setString(3, address);
-            preparedStatement2.setLong(4, phone);
-            preparedStatement2.setDate(5, date);
-            preparedStatement2.setDouble(6, salary);
+            preparedStatement2.setString(1, String.valueOf(ID));
+            preparedStatement2.setString(2, Name);
+            preparedStatement2.setString(3, String.valueOf(salary));
+            preparedStatement2.setString(4, String.valueOf(start));
+            preparedStatement2.setLong(5, Long.parseLong(gender));
+            preparedStatement2.setDate(6, Date.valueOf(address));
+            preparedStatement2.setDouble(7, phone);
             result += preparedStatement2.executeUpdate();
             con.connection.commit();
 
@@ -161,5 +164,7 @@ public class EmployeePayrollService {
         con.connection.close();
         return result;
     }
+
+
 }
 

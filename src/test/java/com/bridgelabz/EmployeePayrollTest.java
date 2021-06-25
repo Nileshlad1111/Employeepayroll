@@ -58,7 +58,7 @@ public class EmployeePayrollTest {
         EmployeePayrollService employeePayroll = new EmployeePayrollService();
         try {
             int result = employeePayroll.dataInRange(Date.valueOf("2019-01-01"), Date.valueOf("2020-11-01"));
-            Assert.assertEquals(1, result);
+            Assert.assertEquals(5, result);
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
@@ -128,8 +128,7 @@ public class EmployeePayrollTest {
     public void addNewEmployeeToNewPayroll() {
         EmployeePayrollService employeePayroll = new EmployeePayrollService();
         try {
-            int result = employeePayroll.addNewEmployee("Kiran", "F", "Bhopal",
-                    78696278, Date.valueOf("2020-02-01"), 4000000);
+            int result = employeePayroll.addNewEmployee(1, "Kiran", 100000.20, Date.valueOf("2020-02-01"), "M", "pune", 589624789);
             Assert.assertEquals(1, result);
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
