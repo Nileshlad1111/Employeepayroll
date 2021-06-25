@@ -58,7 +58,7 @@ public class EmployeePayrollService {
         return resultSet;
     }
 
-    public int retrieveByName(String name) throws SQLException, ClassNotFoundException {
+    public int retrieveByName(String name,int columnIdx) throws SQLException, ClassNotFoundException {
         connect();
         int basicPay = 0;
         PreparedStatement preparedStatement = con.connection.prepareStatement("SELECT * FROM employee_payroll WHERE Name = ?");
@@ -66,7 +66,7 @@ public class EmployeePayrollService {
 
         ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()) {
-            basicPay = resultSet.getInt(8);
+            basicPay = resultSet.getInt(columnIdx);
         }
         con.connection.close();
         return basicPay;

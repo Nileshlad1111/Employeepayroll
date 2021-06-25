@@ -46,8 +46,8 @@ public class EmployeePayrollTest {
     public void givenDatabaseRetrieveDataByNameUsingPreparedStatement() {
         EmployeePayrollService employeePayroll = new EmployeePayrollService();
         try {
-            int result = employeePayroll.retrieveByName("Nilesh");
-            Assert.assertEquals(2000000, result);
+            int result = employeePayroll.retrieveByName("Nilesh",1);
+            Assert.assertEquals(1, result);
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
