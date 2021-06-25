@@ -63,4 +63,64 @@ public class EmployeePayrollTest {
             e.printStackTrace();
         }
     }
+
+    @Test
+    public void givenDatabaseGroupByGenderReturnSum() {
+        EmployeePayrollService employeePayroll = new EmployeePayrollService();
+
+        try {
+            int result = employeePayroll.sumGroupBy("M","Gender");
+            Assert.assertEquals(16901494, result);
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenDatabaseGroupByGenderReturnAverage() {
+        EmployeePayrollService employeePayroll = new EmployeePayrollService();
+
+        try {
+            int result = employeePayroll.averageGroupBy("M","Gender");
+            Assert.assertEquals(3380298, result);
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenDatabaseGroupByGenderReturnMin() {
+        EmployeePayrollService employeePayroll = new EmployeePayrollService();
+
+        try {
+            int result = employeePayroll.minGroupBy("M","Gender");
+            Assert.assertEquals(107890, result);
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenDatabaseGroupByGenderReturnMax() {
+        EmployeePayrollService employeePayroll = new EmployeePayrollService();
+
+        try {
+            int result = employeePayroll.maxGroupBy("M","Gender");
+            Assert.assertEquals(10789078, result);
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenDatabaseGroupByGenderCount() {
+        EmployeePayrollService employeePayroll = new EmployeePayrollService();
+
+        try {
+            int result = employeePayroll.countGroupBy("M","Gender");
+            Assert.assertEquals(5, result);
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

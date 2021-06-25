@@ -82,4 +82,43 @@ public class EmployeePayrollService {
         return count;
     }
 
+    public int groupByToPerformOperations(String sql, String field, String column) throws SQLException, ClassNotFoundException {
+        connect();
+        int sum = 0;
+        PreparedStatement preparedStatement = con.connection.prepareStatement(sql);
+
+        preparedStatement.setString(1, field);
+        preparedStatement.setString(2, column);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+            sum = resultSet.getInt(1);
+        }
+        return sum;
+    }
+
+    public int sumGroupBy(String field, String column) throws SQLException, ClassNotFoundException {
+        String sql = "SELECT SUM(salary) FROM employee_payroll WHERE gender = ? GROUP BY ?";
+        return groupByToPerformOperations(sql, field, column);
+    }
+
+    public int averageGroupBy(String field, String column) throws SQLException, ClassNotFoundException {
+        String sql = "SELECT AVG(salary) FROM employee_payroll WHERE gender = ? GROUP BY ?";
+        return groupByToPerformOperations(sql, field, column);
+    }
+
+    public int minGroupBy(String field, String column) throws SQLException, ClassNotFoundException {
+        String sql = "SELECT MIN(salary) FROM employee_payroll WHERE gender = ? GROUP BY ?";
+        return groupByToPerformOperations(sql, field, column);
+    }
+
+    public int maxGroupBy(String field, String column) throws SQLException, ClassNotFoundException {
+        String sql = "SELECT Max(salary) FROM employee_payroll WHERE gender = ? GROUP BY ?";
+        return groupByToPerformOperations(sql, field, column);
+    }
+
+    public int countGroupBy(String field, String column) throws SQLException, ClassNotFoundException {
+        String sql = "SELECT Count(Name) FROM employee_payroll WHERE gender = ? GROUP BY ?";
+        return groupByToPerformOperations(sql, field, column);
+    }
 }

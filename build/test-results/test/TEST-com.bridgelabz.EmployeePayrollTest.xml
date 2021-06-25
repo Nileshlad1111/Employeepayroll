@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bridgelabz.EmployeePayrollTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-06-24T16:19:43" hostname="LAPTOP-DILI6N8Q" time="0.52">
+<testsuite name="com.bridgelabz.EmployeePayrollTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2021-06-25T05:18:33" hostname="LAPTOP-DILI6N8Q" time="0.442">
   <properties/>
-  <testcase name="givenDatabaseRetrieveDataInRangeOfDate()" classname="com.bridgelabz.EmployeePayrollTest" time="0.52"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[java.sql.SQLException: Column Index out of range, 5 > 4. 
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:965)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:898)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:887)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:861)
-	at com.mysql.jdbc.ResultSetImpl.checkColumnBounds(ResultSetImpl.java:757)
-	at com.mysql.jdbc.ResultSetImpl.getStringInternal(ResultSetImpl.java:5205)
-	at com.mysql.jdbc.ResultSetImpl.getString(ResultSetImpl.java:5127)
-	at com.bridgelabz.EmployeePayrollService.countResult(EmployeePayrollService.java:30)
-	at com.bridgelabz.EmployeePayrollService.dataInRange(EmployeePayrollService.java:80)
-	at com.bridgelabz.EmployeePayrollTest.givenDatabaseRetrieveDataInRangeOfDate(EmployeePayrollTest.java:60)
+  <testcase name="givenDatabaseGroupByGenderCount()" classname="com.bridgelabz.EmployeePayrollTest" time="0.442">
+    <failure message="java.lang.AssertionError: expected:&lt;10789078&gt; but was:&lt;5&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;10789078&gt; but was:&lt;5&gt;
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at org.junit.Assert.assertEquals(Assert.java:631)
+	at com.bridgelabz.EmployeePayrollTest.givenDatabaseGroupByGenderCount(EmployeePayrollTest.java:121)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -102,5 +96,8 @@
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:56)
 	at java.lang.Thread.run(Thread.java:748)
-]]></system-err>
+</failure>
+  </testcase>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
 </testsuite>
