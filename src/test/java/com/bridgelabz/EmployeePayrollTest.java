@@ -123,4 +123,16 @@ public class EmployeePayrollTest {
             e.printStackTrace();
         }
     }
+
+    @Test
+    public void addNewEmployeeToNewPayroll() {
+        EmployeePayrollService employeePayroll = new EmployeePayrollService();
+        try {
+            int result = employeePayroll.addNewEmployee("Kiran", "F", "Bhopal",
+                    78696278, Date.valueOf("2020-02-01"), 4000000);
+            Assert.assertEquals(1, result);
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
